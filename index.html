@@ -196,9 +196,11 @@
               body: JSON.stringify(jval),
             })
             .then(response => {
-              response.json();
+    
               if(response.status == 200){
-                document.getElementById("output").innerHTML = JSON.stringify(data);
+                response.json().then(function (data) {
+                  output.innerHTML = JSON.stringify(data);
+                });
                 return;
               }
               else {
